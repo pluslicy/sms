@@ -1,24 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter,Switch,Route,Link} from 'react-router-dom'
+
 import './App.css';
+
+import Student from './pages/Student'
+import StudentDetails from './pages/StudentDetils'
+import Course from './pages/Course'
+import Teacher from './pages/Teacher'
+import SC from './pages/SC'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <div className="nav_left">
+          <div className="title">
+            智慧校园-学生选课
+          </div>
+          <ul className="nav">
+            <li>
+              <Link to="/student">学生管理</Link>
+            </li>
+            <li>
+              <Link to="/teacher">教师管理</Link>
+            </li>
+            <li>
+              <Link to="/course">课程管理</Link>
+            </li>
+            <li>
+              <Link to="/sc">选课管理</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="content">
+        <Switch>
+          <Route path="/student" component={Student}/>
+          <Route path="/studentDetails" component={StudentDetails}/>
+          <Route path="/course" component={Course}/>
+          <Route path="/teacher" component={Teacher}/>
+          <Route path="/sc" component={SC}/>
+        </Switch>
+        </div>
+
+       
+      </BrowserRouter> 
     </div>
   );
 }
