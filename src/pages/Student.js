@@ -35,7 +35,7 @@ class Student extends React.Component {
     this.loadStudent();
   }
   // 加载学生信息
-  loadStudent(page=1,pageSize=5){
+  loadStudent(page=1,pageSize=10){
     this.setState({ loading:true
     })
     let url = "http://134.175.154.93:7777/student/pageQuery"
@@ -201,7 +201,7 @@ class Student extends React.Component {
     // 分页配置
     let pagination ={
       position:'bottom',
-      pageSize:5,
+      pageSize:10,
       total:this.state.pagevm.total,
       onChange:(page)=>{
         this.loadStudent(page);
@@ -230,7 +230,7 @@ class Student extends React.Component {
           dataSource={this.state.pagevm.list} />
         {/* 模态框 */}
         <Modal
-          title="添加学生"
+          title="修改学生"
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}

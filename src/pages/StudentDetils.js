@@ -18,8 +18,10 @@ class StudentDetails extends React.Component {
         <h2>{this.props.location.state.realname}的详细信息</h2>
         <Button type="link" onClick={this.goBack.bind(this)}>返回</Button>
         
-        {JSON.stringify(student)}
-        <img alt="图片丢失" src={student.photo} style={{width:"80%",border:"1px solid #ccc",padding:"1em",borderRadius:"5px"}}/>
+        {/* {JSON.stringify(student)} */}
+        <div>
+          <img alt="图片丢失" src={student.photo} style={{width:"80%",border:"1px solid #ccc",padding:"1em",borderRadius:"5px"}}/>
+        </div>
       </div>
     )
   }
