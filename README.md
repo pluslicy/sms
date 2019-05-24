@@ -67,8 +67,13 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-![](https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1401558689281_.pic_hd.jpg)
-![]{https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1411558689310_.pic_hd.jpg}
-![]{https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1421558689356_.pic_hd.jpg}
-![]{https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1431558689412_.pic_hd.jpg}
-![]{https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1441558689450_.pic_hd.jpg}
+![avatar](https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1401558689281_.pic_hd.jpg)<br/>
+
+![avatar](https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1411558689310_.pic_hd.jpg)<br/>
+
+![](https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1421558689356_.pic_hd.jpg)<br/>
+
+![](https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1431558689412_.pic_hd.jpg)<br/>
+
+![](https://raw.githubusercontent.com/pluslicy/sms/master/public/scan/1441558689450_.pic_hd.jpg)<br/>
+
