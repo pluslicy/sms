@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import Login from './Login'
 import * as serviceWorker from './serviceWorker';
+import store from './store'
+import {Provider} from 'react-redux'
 
 let user = {username:'terry'};
 // let user = null;
@@ -13,7 +15,10 @@ if(user){
 }
 
 ReactDOM.render(
-show
+  <Provider store={store}>
+    {show}
+  </Provider>
+
 , 
 document.getElementById('root'));
 
