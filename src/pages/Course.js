@@ -1,74 +1,103 @@
 import React from 'react'
-import axios from '../http'
-import {Button} from 'antd'
+import {Table,Button,Modal} from 'antd'
+import {connect} from 'react-redux'
+import CourseForm from './CourseForm'
+// 导入action generator ; 用于获取action,并且进行分发
+import {
+  reloadCourse,
+  deleteCourse,
+  showModal,
+  closeModal
+} from '../store/courseReducer'
+
 
 class Course extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      list:[]
-    }
   }
 
   componentWillMount(){
-    let promise = axios.get('/course/findAll');
-    promise.then((result)=>{
-      console.log("请求结果：",result);
-      this.setState({
-        list:result.data
-      });
-    })
-    promise.catch((error)=>{
-      alert(JSON.stringify(error));
-    })
-    promise.finally(()=>{
-    })
-
+    this.props.dispatch(reloadCourse());
   }
 
-  delHandler(){
-    let url = "/course/findById"
-    axios
-    .get(url,{
-      params:{id:0}
-    })  // 返回一个promise对象
-    .then((result)=>{
-      console.log("---",result);
-    })  // 返回一个promise对象
-
+  delHandler(id){
+    this.props.dispatch(deleteCourse(id))
   }
+
+  toAddHandler(){
+    this.props.dispatch(showModal())
+  } 
 
   addHandler(){
-    let data = {
-      name:'思想政治',
-      description:"test..."
-    }
-    let url = "/course/saveOrUpdate"
-    axios.post(
-      url,  //请求地址
-      data // 数据，手动转换为查询字符串
-    )
-    .then((result)=>{
-      console.log("success",result);
-    })
-    .catch((error)=>{
-      console.log("error",error);
-    })
+   
+  }
+  handleOk = e => {
+    // this.props.dispatch(closeModal())
+    this.form.validateFields((err, values) => {
+      if (!err) {
+        alert('Received values of form: '+JSON.stringify(values));
+      }
+    });
+  };
+
+  handleCancel = e => {
+    console.log(e);
+    this.props.dispatch(closeModal())
+  };
+  courseFormRefs = (form)=>{
+    this.form = form;
   }
 
   render(){
-    let {list} = this.state;
+    let columns = [{
+      title:"名称",
+      dataIndex:"name"
+    },{
+      title:"介绍",
+      dataIndex:"description"
+    },{
+      title:"学分",
+      dataIndex:"credit"
+    },{
+      title:"任课老师",
+      dataIndex:"teacher.realname"
+    },{
+      title:"操作",
+      render:(text,record)=>{
+        return (
+          <div>
+            <a>edit</a>&nbsp;
+            <a onClick={this.delHandler.bind(this,record.id)}>del</a>
+          </div>
+        )
+      }
+    }]
     return (
       <div className="course">
         <h2>课程管理</h2>
-        <div>
-          <Button onClick={this.delHandler.bind(this)}>删除</Button> &nbsp;
-          <Button onClick={this.addHandler.bind(this)}>添加</Button>
+        <div className="btns">
+          <Button onClick={this.toAddHandler.bind(this)}>添加</Button>
         </div>
-        {JSON.stringify(list)}
+        <Table 
+          loading={this.props.courseState.loading}
+          size="small" 
+          rowKey="id" 
+          columns={columns} 
+          dataSource={this.props.courseState.list}/>
+        <Modal
+          title="添加课程"
+          visible={this.props.courseState.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          <CourseForm ref={this.courseFormRefs}/>
+        </Modal>
       </div>
     )
   }
 }
+let mapStateToProps = (state)=>{
+  return state;
+}
 
-export default Course;
+export default connect(mapStateToProps)(Course);

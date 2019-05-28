@@ -8,6 +8,7 @@ import StudentDetails from './pages/StudentDetils'
 import Course from './pages/Course'
 import Teacher from './pages/Teacher'
 import SC from './pages/SC'
+import Memo from './pages/Memo'
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
             <li>
               <Link to="/sc">选课管理</Link>
             </li>
+            <li>
+              <Link to="/memo">备忘录</Link>
+            </li>
           </ul>
         </div>
         <div className="content">
@@ -39,6 +43,9 @@ function App() {
           <Route path="/course" component={Course}/>
           <Route path="/teacher" component={Teacher}/>
           <Route path="/sc" component={SC}/>
+          <Route path="/memo" component={Memo}/>
+
+          
         </Switch>
         </div>
 
