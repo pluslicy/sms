@@ -9,6 +9,7 @@ import Course from './pages/Course'
 import Teacher from './pages/Teacher'
 import SC from './pages/SC'
 import Memo from './pages/Memo'
+import CourseSaga from './pages/CourseSaga'
 
 function App() {
   return (
@@ -26,7 +27,10 @@ function App() {
               <Link to="/teacher">教师管理</Link>
             </li>
             <li>
-              <Link to="/course">课程管理</Link>
+              <Link to="/course">课程管理(thunk)</Link>
+            </li>
+            <li>
+              <Link to="/courseSaga">课程管理(saga)</Link>
             </li>
             <li>
               <Link to="/sc">选课管理</Link>
@@ -44,7 +48,8 @@ function App() {
           <Route path="/teacher" component={Teacher}/>
           <Route path="/sc" component={SC}/>
           <Route path="/memo" component={Memo}/>
-
+          <Route path="/courseSaga" component={CourseSaga}/>
+          
           
         </Switch>
         </div>

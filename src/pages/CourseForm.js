@@ -10,6 +10,8 @@ class CourseForm extends React.Component {
   }
   render(){
     let {getFieldDecorator} = this.props.form;
+    getFieldDecorator("id");
+    getFieldDecorator("photo");
     return (
       <div className="course_form">
         <Form>
@@ -55,4 +57,16 @@ class CourseForm extends React.Component {
   }
 }
 
-export default Form.create()(connect(state=>state)(CourseForm));
+// 将通过props从父组件中获取的值拿出来设置到表单元素上
+const mapPropsToFields = (props)=>{
+  let obj = {};
+  for(let key in props.initData){
+    let val = props.initData[key];
+    obj[key] = Form.createFormField({value:val})
+  }
+  return obj;
+}
+
+export default Form.create({
+  mapPropsToFields
+})(connect(state=>state)(CourseForm));

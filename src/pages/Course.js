@@ -14,6 +14,9 @@ import {
 class Course extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      course:{}
+    }
   }
 
   componentWillMount(){
@@ -25,11 +28,22 @@ class Course extends React.Component {
   }
 
   toAddHandler(){
+    this.setState({
+      course:{
+        
+       }
+    })
     this.props.dispatch(showModal())
   } 
 
   addHandler(){
    
+  }
+  editHandler(record){
+    this.props.dispatch(showModal())
+    this.setState({
+      course:record
+    })
   }
   handleOk = e => {
     // this.props.dispatch(closeModal())
@@ -66,7 +80,7 @@ class Course extends React.Component {
       render:(text,record)=>{
         return (
           <div>
-            <a>edit</a>&nbsp;
+            <a onClick={this.editHandler.bind(this,record)}>edit</a>&nbsp;
             <a onClick={this.delHandler.bind(this,record.id)}>del</a>
           </div>
         )
@@ -90,7 +104,7 @@ class Course extends React.Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <CourseForm ref={this.courseFormRefs}/>
+          <CourseForm initData={this.state.course} ref={this.courseFormRefs}/>
         </Modal>
       </div>
     )
