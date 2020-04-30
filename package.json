@@ -7,7 +7,7 @@
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.11.2",
     "customize-cra": "^0.2.12",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "lodash": "^4.17.11",
